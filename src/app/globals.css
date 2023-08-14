@@ -90,5 +90,7 @@
 		@apply bg-background text-foreground;
 
 		background: #fafafa;
+
+		/* overflow-y: hidden; */
 	}
 }

@@ -71,6 +71,13 @@ module.exports = {
 				md: "0px 0px 32px 0px rgba(99, 60, 255, 0.25)",
 			},
 
+			gridTemplateRows: {
+				layout: "100px minmax(0, 1fr)",
+			},
+			gridTemplateColumns: {
+				layout: "560px minmax(0, 1fr)",
+			},
+
 			borderRadius: {
 				lg: "var(--radius)",
 				md: "calc(var(--radius) - 2px)",
