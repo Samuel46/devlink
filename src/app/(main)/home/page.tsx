@@ -8,6 +8,9 @@ import { Button } from "@ui/button";
 import Logo from "@ui/logo";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tab";
 
+// Add cool animation
+// Create seperate Link and Profile components
+
 export default function HomePage() {
 	return (
 		<Tabs defaultValue="link" className="w-full p-6 h-screen">

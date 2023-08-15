@@ -24,7 +24,7 @@ const TextField = React.forwardRef<HTMLInputElement, InputProps>(
 						type={type}
 						id={id}
 						className={cn(
-							"block w-full rounded-md cursor-pointer  border-[1px] border-input py-[.75rem] pl-10 pr-20   hover:shadow-md hover:border-purple transition-colors text-body-m  placeholder:text-grey-dark placeholder:text-body-m focus:outline-none focus:border-purple disabled:cursor-not-allowed disabled:opacity-50 caret-purple",
+							"block w-full rounded-md cursor-pointer  border-[1px] border-input py-[.75rem] pl-10 pr-20  hover:shadow-md hover:border-purple transition-colors text-body-m  placeholder:text-grey-dark placeholder:text-body-m focus:outline-none focus:border-purple disabled:cursor-not-allowed disabled:opacity-50 caret-purple",
 							className
 						)}
 						ref={ref}

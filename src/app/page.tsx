@@ -4,6 +4,7 @@ import { useState } from "react";
 import { cn } from "@lib/utils";
 import { Link1Icon } from "@radix-ui/react-icons";
 import { Button } from "@ui/button";
+import Dropdown from "@ui/drop-down";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tab";
 import { TextField } from "@ui/text-field";
 
@@ -18,15 +19,16 @@ export default function Home() {
 			{/* <TextField id="name" placeholder="TextField is Empty" label="Text field" Icon={Link1Icon} />
 
 			<Button variant="outline">Button</Button> */}
+			<Dropdown />
 
-			<Tabs defaultValue="account" className="w-[400px]">
+			{/* <Tabs defaultValue="account" className="w-[400px]">
 				<TabsList>
 					<TabsTrigger value="account">Account</TabsTrigger>
 					<TabsTrigger value="password">Password</TabsTrigger>
 				</TabsList>
 				<TabsContent value="account">Make changes to your account here.</TabsContent>
 				<TabsContent value="password">Change your password here.</TabsContent>
-			</Tabs>
+			</Tabs> */}
 		</div>
 	);
 }
