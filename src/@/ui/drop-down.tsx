@@ -1,32 +1,30 @@
-import { Fragment, useState } from "react";
+import { Dispatch, Fragment, SetStateAction, useState } from "react";
 
+import { platforms } from "@config/data";
 import { Listbox, Transition } from "@headlessui/react";
 import { cn } from "@lib/utils";
 
-const people = [
-	{ id: 1, name: "Wade Cooper" },
-	{ id: 2, name: "Arlene Mccoy" },
-	{ id: 3, name: "Devon Webb" },
-	{ id: 4, name: "Tom Cook" },
-	{ id: 5, name: "Tanya Fox" },
-	{ id: 6, name: "Hellen Schmidt" },
-	{ id: 7, name: "Caroline Schultz" },
-	{ id: 8, name: "Mason Heaney" },
-	{ id: 9, name: "Claudie Smitham" },
-	{ id: 10, name: "Emil Schaefer" },
-];
+type Props = {
+	label: string;
+	platform: { id: number; name: string; color: string };
+	setPlatform: Dispatch<SetStateAction<{ id: number; name: string; color: string }>>;
+	className?: string;
+};
 
-export default function Dropdown() {
-	const [selected, setSelected] = useState(people[3]);
-
+export default function Dropdown({ label, platform, setPlatform, className }: Props) {
 	return (
-		<Listbox value={selected} onChange={setSelected}>
+		<Listbox value={platform} onChange={setPlatform}>
 			{({ open }) => (
 				<>
-					<Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">Assigned to</Listbox.Label>
-					<div className="relative mt-2">
-						<Listbox.Button className="relative w-full cursor-pointer rounded-md bg-white py-[0.75rem] border-[1px] border-input px-4 text-left text-grey-dark hover:shadow-md hover:border-purple transition-colors focus:outline-none focus:border-purple">
-							<span className="block truncate text-body-m">{selected.name}</span>
+					<Listbox.Label className="text-body-s text-grey-dark m-0">{label}</Listbox.Label>
+					<div className="relative pt-1 pb-3">
+						<Listbox.Button
+							className={cn(
+								"relative w-full cursor-pointer rounded-md bg-white py-[0.75rem] border-[1px] border-input px-4 text-left text-grey-dark hover:shadow-md hover:border-purple transition-colors focus:outline-none focus:border-purple ",
+								className
+							)}
+						>
+							<span className="block truncate text-body-m">{platform?.name}</span>
 							<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
 								{open ? <OpenMenu /> : <CloseMenu />}
 							</span>
@@ -40,7 +38,7 @@ export default function Dropdown() {
 							leaveTo="opacity-0"
 						>
 							<Listbox.Options className="absolute z-10 mt-2 max-h-60 w-full text-body-m px-4 divide-y overflow-auto rounded-md bg-white border no-scrollbar   focus:outline-none ">
-								{people.map((person) => (
+								{platforms.map((person) => (
 									<Listbox.Option
 										key={person.id}
 										className={({ active }) =>

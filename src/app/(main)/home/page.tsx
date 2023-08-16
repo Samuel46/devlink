@@ -1,17 +1,31 @@
+"use client";
 import Image from "next/image";
 import innerMobile from "public/images/inner.png";
 import onboarding from "public/images/onboarding.png";
 import outerMobile from "public/images/outer.png";
-import React from "react";
+import React, { useState } from "react";
+import { FileRejection } from "react-dropzone";
 
+import { platforms } from "@config/data";
 import { Button } from "@ui/button";
+import Dropdown from "@ui/drop-down";
 import Logo from "@ui/logo";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tab";
+import { TextField } from "@ui/text-field";
+import DropZone from "@ui/upload";
 
 // Add cool animation
 // Create seperate Link and Profile components
 
+interface FileWithPreview extends File {
+	preview: string;
+}
+
 export default function HomePage() {
+	const [platform, setPlatform] = useState(platforms[3]);
+
+	const [files, setFiles] = useState<FileWithPreview[]>([]);
+
 	return (
 		<Tabs defaultValue="link" className="w-full p-6 h-screen">
 			<TabsContent value="profile" className="bottom-6  h-full">
@@ -39,6 +53,8 @@ export default function HomePage() {
 							</div>
 						</div>
 					</div>
+
+					<DropZone setFiles={setFiles} files={files} />
 
 					{/* Mobile section */}
 
@@ -108,10 +124,8 @@ export default function HomePage() {
 						</div>
 					</section>
 
-					<section className="bg-white h-full flex flex-col w-full rounded-md ">
-						{/* Header section */}
-
-						<div className="px-10 pt-10 pb-6 ">
+					<section className="bg-white h-full w-full rounded-md grid grid-rows-[.25fr_minmax(0,_1fr)_94px]">
+						<div className="px-10 pt-10 pb-6">
 							<div className="pb-10">
 								<h1 className="text-heading-m">Customize your links</h1>
 								<p className="text-body-m text-grey">
@@ -123,25 +137,10 @@ export default function HomePage() {
 								+ Add new link
 							</Button>
 						</div>
-
-						{/* Card */}
-						<div className="px-10 pb-10">
-							<div className="bg-grey-light h-full rounded-md p-5 flex flex-col items-center mb-10 ">
-								<Image src={onboarding} alt="onboarding" className="pb-10" />
-
-								<div className="text-center ">
-									<h1 className="text-heading-m pb-4">Let’s get you started</h1>
-
-									<p className="text-body-m text-grey  w-[488px]">
-										Use the “Add new link” button to get started. Once you have more than one link, you can
-										reorder and edit them. We’re here to help you share your profiles with everyone!
-									</p>
-								</div>
-							</div>
+						<div className="px-10 pb-10 flex flex-col gap-6 overflow-y-scroll scroll-smooth">
+							<AddLinkCard platform={platform} setPlatform={setPlatform} />
 						</div>
-
-						{/* Button section */}
-						<div className="flex items-center justify-end divide-yellow-50 border-t h-full w-full ">
+						<div className="flex items-center justify-end divide-yellow-50 border-t h-[95px] w-full ">
 							<div className="px-10">
 								<Button disabled>Save</Button>
 							</div>
@@ -150,6 +149,49 @@ export default function HomePage() {
 				</div>
 			</TabsContent>
 		</Tabs>
+	);
+}
+
+type AddLinkProps = {
+	platform: any;
+	setPlatform: any;
+};
+
+function AddLinkCard({ platform, setPlatform }: AddLinkProps) {
+	return (
+		<div className="bg-grey-light p-5 rounded-md ">
+			<div className="flex items-center justify-between pb-5">
+				<p className="text-heading-s text-grey">Link #2</p>
+				<Button variant="ghost">Remove</Button>
+			</div>
+
+			<div>
+				<Dropdown platform={platform} setPlatform={setPlatform} label="Platforms" />
+
+				<TextField label="Link" id="link" />
+			</div>
+		</div>
+	);
+}
+
+// Empty state
+
+function EmptyState() {
+	return (
+		<div className="px-10 pb-10">
+			<div className="bg-grey-light h-full rounded-md p-5 flex flex-col items-center mb-10 ">
+				<Image src={onboarding} alt="onboarding" className="pb-10" />
+
+				<div className="text-center ">
+					<h1 className="text-heading-m pb-4">Let’s get you started</h1>
+
+					<p className="text-body-m text-grey  w-[488px]">
+						Use the “Add new link” button to get started. Once you have more than one link, you can reorder and edit
+						them. We’re here to help you share your profiles with everyone!
+					</p>
+				</div>
+			</div>
+		</div>
 	);
 }
 

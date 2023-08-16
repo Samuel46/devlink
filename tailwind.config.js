@@ -73,6 +73,7 @@ module.exports = {
 
 			gridTemplateRows: {
 				layout: "100px minmax(0, 1fr)",
+				link: "100px minmax(0, 1fr) 100px",
 			},
 			gridTemplateColumns: {
 				layout: "560px minmax(0, 1fr)",
