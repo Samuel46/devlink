@@ -69,10 +69,12 @@ module.exports = {
 
 			boxShadow: {
 				md: "0px 0px 32px 0px rgba(99, 60, 255, 0.25)",
+				"preview-box": "0px 0px 32px 0px rgba(0, 0, 0, 0.10)",
 			},
 
 			gridTemplateRows: {
 				layout: "100px minmax(0, 1fr)",
+				link: "100px minmax(0, 1fr) 100px",
 			},
 			gridTemplateColumns: {
 				layout: "560px minmax(0, 1fr)",

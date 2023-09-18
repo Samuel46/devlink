@@ -13,11 +13,11 @@ const buttonVariants = cva(
 				outline:
 					"border border-purple bg-transparent text-purple font-semibold shadow-sm hover:bg-purple-light hover:text-purple",
 				secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-				ghost: "hover:bg-accent hover:text-accent-foreground",
+				ghost: "text-body-m text-grey hover:bg-grey-light hover:text-grey-dark",
 				link: "text-primary underline-offset-4 hover:underline",
 			},
 			size: {
-				default: "px-4 py-3",
+				default: "px-[1.69rem] py-[0.69rem]",
 				sm: "h-8 rounded-md px-3 text-xs",
 				lg: "h-10 rounded-md px-8",
 				icon: "h-9 w-9",
