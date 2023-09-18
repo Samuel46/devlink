@@ -49,7 +49,7 @@ export default function DropZone({ setFiles, files }: Props) {
 	});
 	return (
 		<div>
-			<div className="w-full cursor-pointer flex items-center  gap-8">
+			<div className="w-full cursor-pointer mx-auto  gap-8">
 				<div {...getRootProps()} className=" flex justify-center">
 					{!files.length && (
 						<div className="text-center flex flex-col items-center justify-center h-[193px] w-[193px] bg-purple-light rounded-md ">
@@ -127,10 +127,6 @@ export default function DropZone({ setFiles, files }: Props) {
 						</div>
 					)}
 				</div>
-
-				<label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
-					{!files.length ? "Image Not Uploaded" : "Image Uploaded"}
-				</label>
 			</div>
 		</div>
 	);
